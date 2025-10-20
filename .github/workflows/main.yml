@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 name: Node.js CI/CD Pipeline
+=======
+
+name: CI/CD Pipeline
+>>>>>>> origin/main
 
 on:
   push:
@@ -8,6 +13,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,3 +32,20 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push yourdockerhubusername/yourimage:latest
+=======
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+>>>>>>> origin/main
